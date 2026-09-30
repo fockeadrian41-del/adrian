@@ -1,742 +1,1412 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Linux Help - CachyOS Tipps & Support</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #070b09;
-            color: #e8fff0;
-            line-height: 1.6;
-        }
-
-        /* HEADER */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 18px 7%;
-
-            background: rgba(7, 11, 9, 0.95);
-            border-bottom: 1px solid #123d25;
-            backdrop-filter: blur(15px);
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #4dff88;
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-        }
+<head>a
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adrian F. | Gaming & Technik</title>
+
+<meta name="description"
+content="Adrian F. – Gaming, Technik, Linux, CachyOS, Programmieren, YouTube und Webentwicklung.">
+
+<style>
+
+/* =========================================
+   GRUNDLAGEN
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
-        nav a {
-            color: #b8cfc0;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #4dff88;
-        }
-
-        /* MAIN */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #05070a;
+    color: white;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0,255,136,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 40%,
+            rgba(0,150,255,.13),
+            transparent 30%
+        );
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        main {
-            width: 86%;
-            max-width: 1250px;
-            margin: auto;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 620px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    padding: 0 7%;
 
-            padding: 80px 0;
-        }
+    background: rgba(5,7,10,.9);
+    backdrop-filter: blur(15px);
 
-        .badge {
-            display: inline-block;
+    border-bottom: 1px solid rgba(0,255,136,.2);
 
-            padding: 7px 14px;
-            margin-bottom: 20px;
+    z-index: 1000;
+}
 
-            border: 1px solid #1e7a42;
-            border-radius: 50px;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 
-            color: #4dff88;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .hero h1 {
-            font-size: clamp(55px, 8vw, 100px);
-            line-height: 0.95;
-            margin-bottom: 30px;
-        }
+    color: #00ff88;
 
-        .hero h1 span {
-            color: #4dff88;
-        }
+    text-shadow:
+        0 0 10px #00ff88,
+        0 0 25px rgba(0,255,136,.5);
+}
 
-        .hero p {
-            max-width: 600px;
-            color: #a9bdb0;
-            font-size: 19px;
-            margin-bottom: 30px;
-        }
+nav ul {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
 
-        .penguin {
-            font-size: 190px;
-            filter: drop-shadow(
-                0 0 30px rgba(77, 255, 136, 0.25)
-            );
-        }
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    transition: .3s;
+}
 
-        /* BUTTON */
+nav a:hover {
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
+}
 
-        .button {
-            display: inline-block;
 
-            padding: 13px 23px;
+/* =========================================
+   HERO
+========================================= */
 
-            background: #4dff88;
-            color: #061009;
+.hero {
+    min-height: 100vh;
 
-            border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            text-decoration: none;
-            font-weight: bold;
+    text-align: center;
 
-            transition: 0.3s;
-        }
+    padding: 120px 20px 60px;
+}
 
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow:
-                0 10px 30px rgba(77, 255, 136, 0.25);
-        }
+.hero-content {
+    max-width: 950px;
+}
 
-        /* SECTIONS */
+.hero h1 {
+    font-size: clamp(45px,8vw,90px);
+    margin-bottom: 20px;
 
-        section {
-            padding: 90px 0;
-        }
+    background:
+        linear-gradient(
+            90deg,
+            #00ff88,
+            #00aaff
+        );
 
-        h2 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
+    -webkit-background-clip: text;
+    background-clip: text;
 
-        .subtitle {
-            color: #8da497;
-            margin-bottom: 40px;
-        }
+    color: transparent;
+}
 
-        /* CARDS */
+.hero h2 {
+    font-size: 25px;
+    color: #ddd;
+    margin-bottom: 20px;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
+.hero p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #999;
+}
 
-        .card {
-            background: #0c1410;
 
-            border: 1px solid #173523;
-            border-radius: 18px;
+/* =========================================
+   BUTTONS
+========================================= */
 
-            padding: 28px;
+.buttons {
+    margin-top: 35px;
 
-            transition: 0.3s;
-        }
+    display: flex;
+    justify-content: center;
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #4dff88;
+    gap: 15px;
 
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.3);
-        }
+    flex-wrap: wrap;
+}
 
-        .icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
+.btn {
+    display: inline-block;
 
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
+    padding: 14px 25px;
 
-        .card p {
-            color: #94aa9c;
-            margin-bottom: 20px;
-        }
+    border-radius: 10px;
 
-        /* CODE BOX */
+    text-decoration: none;
 
-        .code {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    color: white;
 
-            gap: 10px;
+    border: 1px solid #00ff88;
 
-            padding: 10px;
+    transition: .3s;
+}
 
-            background: #050806;
-            border: 1px solid #183a25;
-            border-radius: 9px;
-        }
+.btn:hover {
+    background: #00ff88;
+    color: #05070a;
 
-        .code code {
-            color: #4dff88;
-            font-size: 13px;
-            overflow-x: auto;
-        }
+    box-shadow:
+        0 0 25px rgba(0,255,136,.6);
 
-        .code button {
-            border: none;
+    transform: translateY(-3px);
+}
 
-            padding: 7px 10px;
+.btn-blue {
+    border-color: #009dff;
+}
 
-            border-radius: 6px;
+.btn-blue:hover {
+    background: #009dff;
 
-            background: #173523;
-            color: #bfffd0;
+    box-shadow:
+        0 0 25px rgba(0,157,255,.6);
+}
 
-            cursor: pointer;
+.btn-red {
+    border-color: #ff3030;
+}
 
-            white-space: nowrap;
-        }
+.btn-red:hover {
+    background: #ff3030;
+    box-shadow:
+        0 0 25px rgba(255,48,48,.5);
+}
 
-        .code button:hover {
-            background: #245d38;
-        }
 
-        /* TERMINAL */
+/* =========================================
+   SECTIONS
+========================================= */
 
-        .terminal-section {
-            text-align: center;
-        }
+section {
+    padding: 100px 7%;
+}
 
-        .terminal {
-            max-width: 800px;
-            margin: 35px auto 0;
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
 
-            overflow: hidden;
+.section-title h2 {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
 
-            text-align: left;
+.section-title span {
+    color: #00ff88;
+}
 
-            background: #030504;
-            border: 1px solid #1b472b;
-            border-radius: 14px;
+.section-title p {
+    color: #888;
+}
 
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.4);
-        }
 
-        .terminal-top {
-            display: flex;
-            gap: 7px;
+/* =========================================
+   CARDS
+========================================= */
 
-            padding: 13px;
+.cards {
+    max-width: 1200px;
+    margin: auto;
 
-            background: #0d1510;
-        }
+    display: grid;
+    grid-template-columns:
+        repeat(3,1fr);
 
-        .terminal-top span {
-            width: 11px;
-            height: 11px;
+    gap: 25px;
+}
 
-            border-radius: 50%;
-            background: #31543d;
-        }
+.card {
+    padding: 30px;
 
-        .terminal pre {
-            padding: 30px;
-            overflow-x: auto;
-        }
+    background:
+        rgba(15,20,25,.85);
 
-        .terminal code {
-            color: #4dff88;
-            font-family: monospace;
-            font-size: 15px;
-        }
+    border:
+        1px solid rgba(0,255,136,.15);
 
-        /* HELP */
+    border-radius: 18px;
 
-        .help {
-            text-align: center;
+    transition: .35s;
 
-            padding: 70px 30px;
+    backdrop-filter: blur(10px);
+}
 
-            background: linear-gradient(
-                135deg,
-                #0b1d12,
-                #07100b
-            );
+.card:hover {
+    transform: translateY(-8px);
 
-            border: 1px solid #173c25;
-            border-radius: 25px;
+    border-color: #00ff88;
 
-            margin-bottom: 90px;
-        }
+    box-shadow:
+        0 10px 40px
+        rgba(0,255,136,.12);
+}
 
-        .help p {
-            color: #9cb2a3;
-            margin: 15px auto 30px;
-        }
+.card .icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
 
-        .discord-widget-container {
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-        }
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
 
-        /* FOOTER */
+.card p {
+    color: #999;
+    line-height: 1.7;
+}
 
-        footer {
-            display: flex;
-            justify-content: space-between;
+.card a {
+    display: inline-block;
+    margin-top: 20px;
 
-            padding: 40px 7%;
+    color: #00ff88;
+    text-decoration: none;
+}
 
-            border-top: 1px solid #12351f;
 
-            color: #71877a;
-        }
+/* =========================================
+   ÜBER MICH
+========================================= */
 
-        footer strong {
-            color: #4dff88;
-        }
+#ueber-mich {
+    background:
+        rgba(0,255,136,.025);
+}
 
-        /* MOBILE */
+.about-box {
+    max-width: 900px;
+    margin: auto;
 
-        @media (max-width: 850px) {
+    padding: 45px;
 
-            nav {
-                display: none;
-            }
+    text-align: center;
 
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                gap: 50px;
-            }
+    background:
+        rgba(15,20,25,.85);
 
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
+    border:
+        1px solid rgba(0,255,136,.25);
 
-            .penguin {
-                font-size: 120px;
-            }
+    border-radius: 20px;
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
+    box-shadow:
+        0 0 40px rgba(0,255,136,.05);
+}
 
-            h2 {
-                font-size: 34px;
-            }
+.about-icon {
+    font-size: 65px;
+    margin-bottom: 20px;
+}
 
-            footer {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-    </style>
+.about-box h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+
+    color: #00ff88;
+}
+
+.about-box p {
+    color: #aaa;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.about-box p + p {
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   GAMING
+========================================= */
+
+#gaming {
+    background:
+        rgba(0,255,136,.025);
+}
+
+.gaming-card {
+    border-color:
+        rgba(0,255,136,.25);
+}
+
+
+/* =========================================
+   TECHNIK
+========================================= */
+
+#technik {
+    background:
+        rgba(0,140,255,.025);
+}
+
+.tech-card {
+    border-color:
+        rgba(0,157,255,.25);
+}
+
+.tech-card:hover {
+    border-color: #009dff;
+
+    box-shadow:
+        0 10px 40px
+        rgba(0,157,255,.15);
+}
+
+.tech-card a {
+    color: #009dff;
+}
+
+
+/* =========================================
+   HOSTING
+========================================= */
+
+#hosting {
+    background:
+        rgba(0,255,136,.02);
+}
+
+.hosting-card {
+    border-color:
+        rgba(0,255,136,.25);
+}
+
+
+/* =========================================
+   YOUTUBE
+========================================= */
+
+#youtube {
+    background:
+        rgba(255,0,0,.02);
+}
+
+.youtube-card {
+    border-color:
+        rgba(255,0,0,.25);
+}
+
+.youtube-card:hover {
+    border-color: #ff3030;
+
+    box-shadow:
+        0 10px 40px
+        rgba(255,0,0,.12);
+}
+
+.youtube-card a {
+    color: #ff4040;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+    max-width: 1000px;
+    margin: 60px auto 0;
+
+    display: grid;
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 20px;
+
+    text-align: center;
+}
+
+.stat {
+    padding: 30px;
+
+    background: #0c1116;
+
+    border-radius: 15px;
+
+    border:
+        1px solid rgba(255,255,255,.05);
+}
+
+.stat strong {
+    display: block;
+
+    font-size: 40px;
+
+    color: #00ff88;
+
+    margin-bottom: 8px;
+}
+
+.stat span {
+    color: #888;
+}
+
+
+/* =========================================
+   KONTAKT
+========================================= */
+
+.contact-box {
+    max-width: 800px;
+    margin: auto;
+
+    text-align: center;
+
+    padding: 45px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(15,20,25,.8);
+
+    border:
+        1px solid rgba(0,255,136,.2);
+}
+
+.contact-box h3 {
+    font-size: 28px;
+}
+
+.contact-box p {
+    color: #999;
+    line-height: 1.7;
+    margin-top: 15px;
+}
+
+.email {
+    color: #00ff88 !important;
+    font-size: 18px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 45px 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+
+    color: #777;
+}
+
+footer strong {
+    color: #00ff88;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width:900px) {
+
+    nav {
+        padding: 0 20px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    section {
+        padding: 75px 20px;
+    }
+}
+
+@media (max-width:500px) {
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero h2 {
+        font-size: 21px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    .about-box {
+        padding: 30px 20px;
+    }
+
+    .contact-box {
+        padding: 30px 20px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-<header>
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<nav>
 
     <div class="logo">
-        🐧 Linux Help
+        ADRIAN F.
     </div>
 
-    <nav>
-        <a href="#start">Startseite</a>
-        <a href="#tipps">CachyOS-Tipps</a>
-        <a href="#pacman">Pacman</a>
-        <a href="#hilfe">Hilfe</a>
-    </nav>
+    <ul>
 
-</header>
+        <li>
+            <a href="#start">Start</a>
+        </li>
+
+        <li>
+            <a href="#ueber-mich">Über mich</a>
+        </li>
+
+        <li>
+            <a href="#gaming">Gaming</a>
+        </li>
+
+        <li>
+            <a href="#technik">Technik</a>
+        </li>
+
+        <li>
+            <a href="#hosting">Hosting</a>
+        </li>
+
+        <li>
+            <a href="#youtube">YouTube</a>
+        </li>
+
+        <li>
+            <a href="#kontakt">Kontakt</a>
+        </li>
+
+    </ul>
+
+</nav>
 
 
-<main>
+<!-- =========================================
+     START
+========================================= -->
 
-    <!-- HERO -->
+<section class="hero" id="start">
 
-    <section class="hero" id="start">
+    <div class="hero-content">
 
-        <div>
+        <h1>
+            Gaming & Technik
+        </h1>
 
-            <span class="badge">
-                ARCH LINUX • CACHYOS
-            </span>
+        <h2>
+            🎮 Gaming · 💻 Technik · 🐧 Linux · 📹 YouTube
+        </h2>
 
-            <h1>
-                CachyOS<br>
-                <span>Tipps & Hilfe</span>
-            </h1>
+        <p>
+            Willkommen auf meiner Homepage!
+            Hier findest du Gaming, Technik,
+            Linux, Programmieren,
+            Webentwicklung und meine YouTube-Projekte.
+        </p>
 
-            <p>
-                Einfache Anleitungen, Terminal-Befehle
-                und praktische Tipps für CachyOS.
-            </p>
+        <div class="buttons">
 
-            <a class="button" href="#tipps">
-                Tipps entdecken
+            <a
+                href="#ueber-mich"
+                class="btn">
+                👋 Über mich
+            </a>
+
+            <a
+                href="#youtube"
+                class="btn btn-red">
+                ▶️ Mein YouTube
             </a>
 
         </div>
 
-        <div class="penguin">
-            🐧
-        </div>
+    </div>
 
-    </section>
+</section>
 
 
-    <!-- TIPPS -->
+<!-- =========================================
+     ÜBER MICH
+========================================= -->
 
-    <section id="tipps">
+<section id="ueber-mich">
 
-        <h2>🔧 CachyOS-Tipps</h2>
-
-        <p class="subtitle">
-            Nützliche Befehle für dein CachyOS-System.
-        </p>
-
-
-        <div class="cards">
-
-            <!-- UPDATE -->
-
-            <article class="card">
-
-                <div class="icon">🔄</div>
-
-                <h3>
-                    System aktualisieren
-                </h3>
-
-                <p>
-                    Aktualisiere dein System und
-                    deine installierten Pakete.
-                </p>
-
-                <div class="code">
-
-                    <code>
-                        sudo pacman -Syu
-                    </code>
-
-                    <button onclick="copyCode(this)">
-                        Kopieren
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- INSTALL -->
-
-            <article class="card">
-
-                <div class="icon">📦</div>
-
-                <h3>
-                    Programm installieren
-                </h3>
-
-                <p>
-                    Installiere ein Paket direkt
-                    über Pacman.
-                </p>
-
-                <div class="code">
-
-                    <code>
-                        sudo pacman -S paketname
-                    </code>
-
-                    <button onclick="copyCode(this)">
-                        Kopieren
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- SEARCH -->
-
-            <article class="card">
-
-                <div class="icon">🔍</div>
-
-                <h3>
-                    Paket suchen
-                </h3>
-
-                <p>
-                    Suche nach verfügbaren Paketen
-                    in den Repositories.
-                </p>
-
-                <div class="code">
-
-                    <code>
-                        pacman -Ss suchbegriff
-                    </code>
-
-                    <button onclick="copyCode(this)">
-                        Kopieren
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- REMOVE -->
-
-            <article class="card">
-
-                <div class="icon">🗑️</div>
-
-                <h3>
-                    Paket entfernen
-                </h3>
-
-                <p>
-                    Entferne ein installiertes Paket.
-                </p>
-
-                <div class="code">
-
-                    <code>
-                        sudo pacman -R paketname
-                    </code>
-
-                    <button onclick="copyCode(this)">
-                        Kopieren
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- CACHE -->
-
-            <article class="card">
-
-                <div class="icon">🧹</div>
-
-                <h3>
-                    Cache aufräumen
-                </h3>
-
-                <p>
-                    Entferne alte Pakete aus
-                    dem Pacman-Cache.
-                </p>
-
-                <div class="code">
-
-                    <code>
-                        sudo pacman -Sc
-                    </code>
-
-                    <button onclick="copyCode(this)">
-                        Kopieren
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- FASTFETCH -->
-
-            <article class="card">
-
-                <div class="icon">💻</div>
-
-                <h3>
-                    Systeminformationen
-                </h3>
-
-                <p>
-                    Zeige Informationen über
-                    dein System an.
-                </p>
-
-                <div class="code">
-
-                    <code>
-                        fastfetch
-                    </code>
-
-                    <button onclick="copyCode(this)">
-                        Kopieren
-                    </button>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- TERMINAL -->
-
-    <section class="terminal-section" id="pacman">
-
-        <span class="badge">
-            TERMINAL
-        </span>
+    <div class="section-title">
 
         <h2>
-            🐧 Pacman-Grundlagen
-        </h2>
-
-
-        <div class="terminal">
-
-            <div class="terminal-top">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <pre><code>$ sudo pacman -Syu
-
-$ sudo pacman -S firefox
-
-$ pacman -Ss firefox
-
-$ sudo pacman -R firefox</code></pre>
-
-        </div>
-
-    </section>
-
-
-    <!-- HILFE -->
-
-    <section class="help" id="hilfe">
-
-        <h2>
-            ❓ Brauchst du Hilfe?
+            👋 <span>Über mich</span>
         </h2>
 
         <p>
-            Probleme mit CachyOS, Pacman, KDE,
-            Audio, Netzwerk oder anderen Linux-Themen?<br>
-            Tritt unserer Community <strong>Linux Help</strong> bei!
-        </p>
-
-        <a class="button" href="https://discord.gg/geFqgX4AgK" target="_blank" rel="noopener noreferrer">
-            💬 Discord Server beitreten
-        </a>
-
-        <div class="discord-widget-container">
-            <iframe src="https://discord.com/widget?id=1477441563427737660&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        </div>
-
-    </section>
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div>
-
-        <strong>
-            🐧 Linux Help
-        </strong>
-
-        <p>
-            Deine Hilfe-Seite für Arch Linux & CachyOS.<br>
-            Betreiber: Adrian Focke
+            Wer ich bin und was ich gerne mache
         </p>
 
     </div>
 
+
+    <div class="about-box">
+
+        <div class="about-icon">
+            💻🎮📹
+        </div>
+
+        <h3>
+            Hallo, ich bin Adrian!
+        </h3>
+
+        <p>
+            Ich habe eine Behinderung und lasse mich
+            davon nicht davon abhalten, meine Interessen
+            zu verfolgen und neue Dinge auszuprobieren.
+        </p>
+
+        <p>
+            Ich liebe das Programmieren und beschäftige
+            mich gerne mit Technik, Gaming, Linux,
+            CachyOS und Webentwicklung.
+        </p>
+
+        <p>
+            Außerdem erstelle ich gerne Videos für
+            meinen YouTube-Kanal. Dabei entwickle ich
+            neue Ideen, probiere verschiedene Inhalte
+            aus und lerne ständig neue Dinge.
+        </p>
+
+        <p>
+            🚀 Mein Ziel ist es, meine
+            Programmierkenntnisse weiter auszubauen,
+            eigene Projekte zu entwickeln und regelmäßig
+            neue Videos zu erstellen.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="#technik"
+                class="btn">
+                💻 Meine Technik
+            </a>
+
+            <a
+                href="https://www.youtube.com/@AdrianfockeYT"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-red">
+                📹 YouTube-Kanal
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     GAMING
+========================================= -->
+
+<section id="gaming">
+
+    <div class="section-title">
+
+        <h2>
+            🎮 <span>Gaming</span>
+        </h2>
+
+        <p>
+            Alles rund ums Gaming
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card gaming-card">
+
+            <div class="icon">🎮</div>
+
+            <h3>
+                Gaming
+            </h3>
+
+            <p>
+                Gaming-News, Spiele,
+                Tipps und interessante
+                Informationen aus der
+                Gaming-Welt.
+            </p>
+
+            <a href="#">
+                Mehr erfahren →
+            </a>
+
+        </div>
+
+
+        <div class="card gaming-card">
+
+            <div class="icon">🖥️</div>
+
+            <h3>
+                Gaming-PC
+            </h3>
+
+            <p>
+                Gaming-Hardware,
+                Grafikkarten, Prozessoren,
+                Gaming-PCs und Performance.
+            </p>
+
+            <a href="#">
+                PC entdecken →
+            </a>
+
+        </div>
+
+
+        <div class="card gaming-card">
+
+            <div class="icon">🕹️</div>
+
+            <h3>
+                Games
+            </h3>
+
+            <p>
+                Interessante Spiele für
+                PC, Konsole und verschiedene
+                Gaming-Plattformen.
+            </p>
+
+            <a href="#">
+                Games ansehen →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     TECHNIK
+========================================= -->
+
+<section id="technik">
+
+    <div class="section-title">
+
+        <h2>
+            💻 <span>Technik</span>
+        </h2>
+
+        <p>
+            Hardware, Software und technische Tipps
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card tech-card">
+
+            <div class="icon">🐧</div>
+
+            <h3>
+                Linux
+            </h3>
+
+            <p>
+                Linux-Tipps,
+                Terminal-Befehle,
+                Problemlösungen und Anleitungen.
+            </p>
+
+            <a href="#">
+                Linux-Hilfe →
+            </a>
+
+        </div>
+
+
+        <div class="card tech-card">
+
+            <div class="icon">🟢</div>
+
+            <h3>
+                CachyOS
+            </h3>
+
+            <p>
+                Tipps für CachyOS,
+                Arch Linux, Pacman,
+                Terminal und Systempflege.
+            </p>
+
+            <a href="#">
+                CachyOS-Tipps →
+            </a>
+
+        </div>
+
+
+        <div class="card tech-card">
+
+            <div class="icon">⚙️</div>
+
+            <h3>
+                Hardware
+            </h3>
+
+            <p>
+                PCs, Notebooks,
+                Prozessoren, Grafikkarten,
+                Speicher und Zubehör.
+            </p>
+
+            <a href="#">
+                Hardware ansehen →
+            </a>
+
+        </div>
+
+
+        <div class="card tech-card">
+
+            <div class="icon">📱</div>
+
+            <h3>
+                Smartphones
+            </h3>
+
+            <p>
+                Android, Apps,
+                Einstellungen und
+                praktische Smartphone-Tipps.
+            </p>
+
+            <a href="#">
+                Smartphone-Tipps →
+            </a>
+
+        </div>
+
+
+        <div class="card tech-card">
+
+            <div class="icon">🌐</div>
+
+            <h3>
+                Internet
+            </h3>
+
+            <p>
+                Netzwerk, Webseiten,
+                Server, Hosting und
+                Internet-Technik.
+            </p>
+
+            <a href="#">
+                Internet →
+            </a>
+
+        </div>
+
+
+        <div class="card tech-card">
+
+            <div class="icon">💻</div>
+
+            <h3>
+                Programmieren
+            </h3>
+
+            <p>
+                HTML, CSS, JavaScript
+                und weitere Projekte
+                rund um die Webentwicklung.
+            </p>
+
+            <a href="#">
+                Programmierung →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     HOSTING
+========================================= -->
+
+<section id="hosting">
+
+    <div class="section-title">
+
+        <h2>
+            🌐 <span>Website & Hosting</span>
+        </h2>
+
+        <p>
+            Meine Webentwicklung und Hosting-Projekte
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card hosting-card">
+
+            <div class="icon">🐙</div>
+
+            <h3>
+                GitHub
+            </h3>
+
+            <p>
+                GitHub wird für die Verwaltung
+                meiner Website und meines
+                Quellcodes verwendet.
+            </p>
+
+            <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer">
+                GitHub öffnen →
+            </a>
+
+        </div>
+
+
+        <div class="card hosting-card">
+
+            <div class="icon">🚀</div>
+
+            <h3>
+                GitHub Pages
+            </h3>
+
+            <p>
+                Meine Website kann mit
+                GitHub Pages online
+                veröffentlicht werden.
+            </p>
+
+            <a
+                href="https://pages.github.com/"
+                target="_blank"
+                rel="noopener noreferrer">
+                GitHub Pages →
+            </a>
+
+        </div>
+
+
+        <div class="card hosting-card">
+
+            <div class="icon">🌍</div>
+
+            <h3>
+                Webentwicklung
+            </h3>
+
+            <p>
+                Ich entwickle meine Webseiten
+                mit HTML, CSS und JavaScript.
+            </p>
+
+            <a href="#technik">
+                Technik ansehen →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     YOUTUBE
+========================================= -->
+
+<section id="youtube">
+
+    <div class="section-title">
+
+        <h2>
+            📹 <span>YouTube</span>
+        </h2>
+
+        <p>
+            Meine Videos und Content-Projekte
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card youtube-card">
+
+            <div class="icon">
+                📺
+            </div>
+
+            <h3>
+                Adrian Focke
+            </h3>
+
+            <p>
+                Auf meinem YouTube-Kanal erstelle
+                ich Videos und teile meine Projekte,
+                Ideen und Inhalte.
+            </p>
+
+            <a
+                href="https://www.youtube.com/@AdrianfockeYT"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                ▶️ YouTube-Kanal besuchen →
+
+            </a>
+
+        </div>
+
+
+        <div class="card youtube-card">
+
+            <div class="icon">
+                🎬
+            </div>
+
+            <h3>
+                Videos erstellen
+            </h3>
+
+            <p>
+                Ich liebe es, eigene Videos zu
+                erstellen, neue Inhalte auszuprobieren
+                und kreativ zu sein.
+            </p>
+
+            <a
+                href="https://www.youtube.com/@AdrianfockeYT"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                🎥 Meine Videos →
+
+            </a>
+
+        </div>
+
+
+        <div class="card youtube-card">
+
+            <div class="icon">
+                🚀
+            </div>
+
+            <h3>
+                Mein YouTube-Ziel
+            </h3>
+
+            <p>
+                Ich möchte meinen Kanal weiterentwickeln,
+                neue Videos produzieren und meine
+                Community weiter aufbauen.
+            </p>
+
+            <a
+                href="https://www.youtube.com/@AdrianfockeYT"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                🚀 Kanal öffnen →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     BEREICHE
+========================================= -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>
+            🚀 Meine <span>Bereiche</span>
+        </h2>
+
+        <p>
+            Das sind meine wichtigsten Themen
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>🎮</strong>
+            <span>Gaming</span>
+        </div>
+
+        <div class="stat">
+            <strong>💻</strong>
+            <span>Technik</span>
+        </div>
+
+        <div class="stat">
+            <strong>🐧</strong>
+            <span>Linux</span>
+        </div>
+
+        <div class="stat">
+            <strong>📹</strong>
+            <span>YouTube</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     KONTAKT
+========================================= -->
+
+<section id="kontakt">
+
+    <div class="section-title">
+
+        <h2>
+            📩 <span>Kontakt</span>
+        </h2>
+
+        <p>
+            Du möchtest mich erreichen?
+        </p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+        <h3>
+            👋 Kontakt zu Adrian
+        </h3>
+
+        <p>
+            Du möchtest mir schreiben oder mehr
+            über meine Projekte erfahren?
+            Du kannst mich gerne per E-Mail kontaktieren.
+        </p>
+
+        <p class="email">
+            📧 fockeadrian41@gmail.com
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                href="mailto:fockeadrian41@gmail.com"
+                class="btn">
+
+                ✉️ E-Mail schreiben
+
+            </a>
+
+
+            <a
+                href="https://www.youtube.com/@AdrianfockeYT"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-red">
+
+                ▶️ YouTube besuchen
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
     <p>
-        © 2026 Linux Help — Adrian Focke
+        © 2026
+        <strong>Adrian F.</strong>
+        – Gaming & Technik
+    </p>
+
+    <p style="margin-top:10px;">
+        🎮 Gaming · 💻 Technik · 🐧 Linux · 📹 YouTube
     </p>
 
 </footer>
 
 
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
 <script>
 
-function copyCode(button) {
+const cards =
+    document.querySelectorAll(".card");
 
-    const code =
-        button.parentElement
-        .querySelector("code")
-        .innerText;
+const observer =
+    new IntersectionObserver(
+        entries => {
 
-    navigator.clipboard.writeText(code);
+            entries.forEach(entry => {
 
-    button.innerText = "✓ Kopiert";
+                if (entry.isIntersecting) {
 
-    setTimeout(() => {
+                    entry.target.style.opacity = "1";
 
-        button.innerText = "Kopieren";
+                    entry.target.style.transform =
+                        "translateY(0)";
+                }
 
-    }, 1500);
+            });
 
-}
+        },
+        {
+            threshold: 0.1
+        }
+    );
+
+
+cards.forEach(card => {
+
+    card.style.opacity = "0";
+
+    card.style.transform =
+        "translateY(30px)";
+
+    card.style.transition =
+        "opacity .6s ease, transform .6s ease";
+
+    observer.observe(card);
+
+});
 
 </script>
 
+
 </body>
 </html>
+```
