@@ -1,0 +1,1312 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adrian Focke | Webentwicklung & Technik</title>
+
+    <meta name="description"
+          content="Adrian Focke – Webentwicklung, Programmierung, Linux, Technik und digitale Projekte.">
+
+    <style>
+
+        /* =====================================
+           GRUNDLAGEN
+        ===================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050b08;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================
+           WILLKOMMEN INTRO
+        ===================================== */
+
+        #welcome {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #123d2b 0%,
+                    #07150e 45%,
+                    #030806 100%
+                );
+
+            animation: welcomeOut 1.2s ease 4.5s forwards;
+        }
+
+
+        .welcome-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+
+        .welcome-small {
+            font-size: 1.3rem;
+            color: #9db9ac;
+            letter-spacing: 5px;
+
+            opacity: 0;
+
+            animation:
+                welcomeSmall 1s ease forwards;
+        }
+
+
+        .welcome-name {
+            margin-top: 15px;
+
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+
+            color: #00eaff;
+
+            opacity: 0;
+
+            display: inline-block;
+
+            animation:
+                welcomeName 1.5s cubic-bezier(.17,.67,.25,1.2)
+                0.8s forwards;
+        }
+
+
+        .welcome-line {
+            width: 0;
+            height: 2px;
+
+            margin: 25px auto;
+
+            background: #00eaff;
+
+            box-shadow:
+                0 0 10px #00eaff,
+                0 0 25px #00eaff;
+
+            animation:
+                welcomeLine 1s ease 2.2s forwards;
+        }
+
+
+        .welcome-text {
+            color: #b8cfc3;
+            font-size: 1.1rem;
+
+            opacity: 0;
+
+            animation:
+                welcomeText 1s ease 2.7s forwards;
+        }
+
+
+        @keyframes welcomeSmall {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes welcomeName {
+
+            0% {
+                opacity: 0;
+                transform:
+                    translateY(80px)
+                    scale(.6)
+                    rotateX(70deg);
+            }
+
+            60% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1)
+                    rotateX(0);
+            }
+
+        }
+
+
+        @keyframes welcomeLine {
+
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 280px;
+            }
+
+        }
+
+
+        @keyframes welcomeText {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes welcomeOut {
+
+            from {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            to {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+
+        }
+
+
+        /* =====================================
+           HINTERGRUND
+        ===================================== */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(0, 234, 255, .08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(0, 180, 100, .10),
+                    transparent 35%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================
+           NAVIGATION
+        ===================================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(5, 11, 8, .82);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(0, 234, 255, .15);
+        }
+
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+
+            min-height: 75px;
+
+            padding: 0 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #00eaff;
+
+            text-shadow:
+                0 0 10px rgba(0, 234, 255, .5);
+        }
+
+
+        nav ul {
+            list-style: none;
+
+            display: flex;
+            gap: 30px;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+
+            transition: .3s;
+        }
+
+
+        nav a:hover {
+            color: #00eaff;
+        }
+
+
+        /* =====================================
+           HERO
+        ===================================== */
+
+        .hero {
+            min-height: calc(100vh - 75px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+
+        .hero-content {
+            max-width: 950px;
+
+            animation:
+                heroAppear 1.2s ease 4.6s both;
+        }
+
+
+        @keyframes heroAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(70px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        .hero-label {
+            display: inline-block;
+
+            padding: 9px 20px;
+
+            border: 1px solid #00eaff;
+            border-radius: 50px;
+
+            color: #00eaff;
+
+            margin-bottom: 25px;
+
+            animation:
+                floating 4s ease-in-out infinite;
+        }
+
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+
+        .hero h1 {
+            font-size: clamp(3rem, 9vw, 7rem);
+            line-height: .95;
+
+            margin-bottom: 30px;
+        }
+
+
+        .hero h1 .hello {
+            display: block;
+
+            color: white;
+
+            animation:
+                slideLeft 1s ease 5s both;
+        }
+
+
+        .hero h1 .name {
+            display: inline-block;
+
+            color: #00eaff;
+
+            text-shadow:
+                0 0 10px rgba(0, 234, 255, .6),
+                0 0 30px rgba(0, 234, 255, .3);
+
+            animation:
+                nameFloat 4s ease-in-out infinite,
+                nameAppear 1.3s ease 5.3s both;
+        }
+
+
+        @keyframes slideLeft {
+
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        }
+
+
+        @keyframes nameAppear {
+
+            from {
+                opacity: 0;
+                transform: translateX(100px) scale(.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+        }
+
+
+        @keyframes nameFloat {
+
+            0%, 100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            25% {
+                transform: translateY(-8px) rotate(-1deg);
+            }
+
+            50% {
+                transform: translateY(0) rotate(0);
+            }
+
+            75% {
+                transform: translateY(8px) rotate(1deg);
+            }
+
+        }
+
+
+        .hero-description {
+            max-width: 700px;
+
+            margin: 0 auto 35px;
+
+            color: #afc1b7;
+
+            font-size: 1.15rem;
+
+            animation:
+                descriptionAppear 1s ease 5.8s both;
+        }
+
+
+        @keyframes descriptionAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =====================================
+           BUTTONS
+        ===================================== */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+
+        .button {
+            padding: 14px 25px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: .3s;
+        }
+
+
+        .button-primary {
+            background: #00eaff;
+            color: #03100b;
+
+            box-shadow:
+                0 0 20px rgba(0, 234, 255, .2);
+        }
+
+
+        .button-primary:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 0 30px rgba(0, 234, 255, .5);
+        }
+
+
+        .button-secondary {
+            color: white;
+
+            border: 1px solid #27664e;
+        }
+
+
+        .button-secondary:hover {
+            border-color: #00eaff;
+            color: #00eaff;
+
+            transform: translateY(-5px);
+        }
+
+
+        /* =====================================
+           SECTIONS
+        ===================================== */
+
+        section {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 100px 25px;
+        }
+
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+
+        .section-title h2 {
+            font-size: 2.8rem;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-title p {
+            color: #8ea69a;
+        }
+
+
+        /* =====================================
+           CARDS
+        ===================================== */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .card {
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 38, 27, .9),
+                    rgba(7, 20, 14, .9)
+                );
+
+            border: 1px solid #164c37;
+
+            border-radius: 20px;
+
+            transition: .4s;
+        }
+
+
+        .card:hover {
+            transform:
+                translateY(-10px)
+                scale(1.02);
+
+            border-color: #00eaff;
+
+            box-shadow:
+                0 15px 40px rgba(0, 234, 255, .1);
+        }
+
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+
+        .card h3 {
+            color: #00eaff;
+            margin-bottom: 12px;
+        }
+
+
+        .card p {
+            color: #afc1b7;
+        }
+
+
+        /* =====================================
+           PROJEKTE
+        ===================================== */
+
+        .project {
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .project::before {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            right: -40px;
+            top: -40px;
+
+            background: #00eaff;
+
+            border-radius: 50%;
+
+            opacity: .08;
+        }
+
+
+        .tags {
+            margin-top: 20px;
+        }
+
+
+        .tag {
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            margin: 3px;
+
+            background: #123c2b;
+
+            border-radius: 20px;
+
+            color: #00eaff;
+
+            font-size: .8rem;
+        }
+
+
+        /* =====================================
+           YOUTUBE
+        ===================================== */
+
+        .youtube-box {
+            text-align: center;
+
+            padding: 60px 25px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0d2419,
+                    #07110d
+                );
+
+            border: 1px solid #164c37;
+        }
+
+
+        .youtube-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+
+        .youtube-box p {
+            color: #afc1b7;
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================
+           KONTAKT
+        ===================================== */
+
+        .contact {
+            text-align: center;
+        }
+
+
+        .email {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            color: #00eaff;
+
+            font-size: 1.2rem;
+
+            text-decoration: none;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer {
+            padding: 40px 20px;
+
+            text-align: center;
+
+            border-top: 1px solid #123c2b;
+
+            color: #73877d;
+        }
+
+
+        footer span {
+            color: #00eaff;
+        }
+
+
+        /* =====================================
+           HANDY
+        ===================================== */
+
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            section {
+                padding: 70px 20px;
+            }
+
+
+            .welcome-name {
+                font-size: 3.5rem;
+            }
+
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         WILLKOMMEN
+    ===================================== -->
+
+    <div id="welcome">
+
+        <div class="welcome-content">
+
+            <div class="welcome-small">
+                WILLKOMMEN BEI
+            </div>
+
+            <div class="welcome-name">
+                Adrian Focke
+            </div>
+
+            <div class="welcome-line"></div>
+
+            <div class="welcome-text">
+                Webentwicklung · Technik · Linux · Projekte
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="background"></div>
+
+
+    <!-- =====================================
+         NAVIGATION
+    ===================================== -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                Adrian Focke
+            </div>
+
+
+            <ul>
+
+                <li>
+                    <a href="#start">Start</a>
+                </li>
+
+                <li>
+                    <a href="#webentwicklung">
+                        Webentwicklung
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#projekte">
+                        Projekte
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#technik">
+                        Technik
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#kontakt">
+                        Kontakt
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================
+         START
+    ===================================== -->
+
+    <main>
+
+        <section class="hero" id="start">
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+                    💻 Webentwicklung & Technik
+                </div>
+
+
+                <h1>
+
+                    <span class="hello">
+                        Hallo, ich bin
+                    </span>
+
+                    <span class="name">
+                        Adrian Focke
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Willkommen auf meiner persönlichen Website.
+                    Hier findest du meine Projekte rund um
+                    Webentwicklung, Programmierung, Linux,
+                    Technik und digitale Ideen.
+
+                </p>
+
+
+                <div class="buttons">
+
+                    <a
+                        href="#projekte"
+                        class="button button-primary">
+
+                        🚀 Meine Projekte
+
+                    </a>
+
+
+                    <a
+                        href="#kontakt"
+                        class="button button-secondary">
+
+                        ✉️ Kontakt
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             WEBENTWICKLUNG
+        ===================================== -->
+
+        <section id="webentwicklung">
+
+            <div class="section-title">
+
+                <h2>
+                    🌐 Webentwicklung
+                </h2>
+
+                <p>
+                    Meine Welt rund um Websites und Programmierung.
+                </p>
+
+            </div>
+
+
+            <div class="grid">
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        HTML
+                    </h3>
+
+                    <p>
+                        Moderne Strukturen für
+                        übersichtliche Websites.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🎨
+                    </div>
+
+                    <h3>
+                        CSS
+                    </h3>
+
+                    <p>
+                        Responsive Designs,
+                        Animationen und moderne Layouts.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        JavaScript
+                    </h3>
+
+                    <p>
+                        Interaktive Funktionen
+                        und dynamische Webseiten.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PROJEKTE
+        ===================================== -->
+
+        <section id="projekte">
+
+            <div class="section-title">
+
+                <h2>
+                    🚀 Meine Projekte
+                </h2>
+
+                <p>
+                    Dinge, an denen ich arbeite.
+                </p>
+
+            </div>
+
+
+            <div class="grid">
+
+
+                <div class="card project">
+
+                    <div class="card-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Persönliche Website
+                    </h3>
+
+                    <p>
+                        Meine eigene Website über
+                        Webentwicklung, Technik und mich.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            HTML
+                        </span>
+
+                        <span class="tag">
+                            CSS
+                        </span>
+
+                        <span class="tag">
+                            JavaScript
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card project">
+
+                    <div class="card-icon">
+                        🐧
+                    </div>
+
+                    <h3>
+                        Linux Hilfe
+                    </h3>
+
+                    <p>
+                        Tipps und Hilfestellungen
+                        für Linux und CachyOS.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Linux
+                        </span>
+
+                        <span class="tag">
+                            CachyOS
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card project">
+
+                    <div class="card-icon">
+                        🎮
+                    </div>
+
+                    <h3>
+                        Gaming & Server
+                    </h3>
+
+                    <p>
+                        Projekte rund um Gaming,
+                        Server und Community-Technik.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Gaming
+                        </span>
+
+                        <span class="tag">
+                            Server
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             TECHNIK
+        ===================================== -->
+
+        <section id="technik">
+
+            <div class="section-title">
+
+                <h2>
+                    🛠️ Technik
+                </h2>
+
+                <p>
+                    Computer, Linux und digitale Projekte.
+                </p>
+
+            </div>
+
+
+            <div class="grid">
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🐧
+                    </div>
+
+                    <h3>
+                        CachyOS
+                    </h3>
+
+                    <p>
+                        Ich beschäftige mich mit
+                        Linux, Terminal, Paketen
+                        und Systemadministration.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🖥️
+                    </div>
+
+                    <h3>
+                        Computer
+                    </h3>
+
+                    <p>
+                        Hardware, Software,
+                        Betriebssysteme und
+                        technische Lösungen.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🎥
+                    </div>
+
+                    <h3>
+                        Content
+                    </h3>
+
+                    <p>
+                        Videos, Shorts,
+                        YouTube und digitale
+                        Inhalte.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             YOUTUBE
+        ===================================== -->
+
+        <section>
+
+            <div class="youtube-box">
+
+                <h2>
+                    📺 Mein YouTube-Kanal
+                </h2>
+
+                <p>
+                    Videos, Shorts und weitere
+                    digitale Inhalte von Adrian Focke.
+                </p>
+
+
+                <a
+                    class="button button-primary"
+                    href="https://www.youtube.com/@AdrianfockeYT"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    YouTube besuchen
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             KONTAKT
+        ===================================== -->
+
+        <section
+            class="contact"
+            id="kontakt">
+
+            <div class="section-title">
+
+                <h2>
+                    ✉️ Kontakt
+                </h2>
+
+                <p>
+                    Du möchtest mich erreichen?
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <p>
+                    Für Fragen, Ideen oder gemeinsame
+                    Projekte kannst du mir schreiben.
+                </p>
+
+
+                <a
+                    class="email"
+                    href="mailto:fockeadrian41@gmail.com">
+
+                    fockeadrian41@gmail.com
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ===================================== -->
+
+    <footer>
+
+        <p>
+            © 2026
+            <span>Adrian Focke</span>
+            · Webentwicklung & Technik
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
+```
